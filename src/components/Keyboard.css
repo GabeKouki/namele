@@ -1,0 +1,54 @@
+.keyboardContainer {
+  color: black;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  align-items: center; 
+  margin-top: 50px;
+  width: 100%; 
+  overflow: hidden;
+}
+
+.keyboardTopRow, .keyboardMiddleRow, .keyboardBottomRow {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+}
+
+.keyboardTopRow {
+  grid-template-columns: repeat(10, 1fr);
+  cursor: pointer;
+}
+
+.keyboardMiddleRow {
+  color: black;
+  grid-template-columns: repeat(9, 1fr);
+  cursor: pointer;
+}
+
+.keyboardBottomRow {
+  color: black;
+  grid-template-columns: repeat(7, 1fr);
+  cursor: pointer;
+}
+
+.keyboardContainer h1 {
+  height: 50px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: rgb(188, 188, 188);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  margin: 0;
+}
+
+.keyboardContainer h1:hover {
+  background-color: rgb(150, 150, 150);
+}
+
+.keyboardContainer h1:active {
+  background-color: rgb(120, 120, 120);
+  transform: scale(0.95);
+}
