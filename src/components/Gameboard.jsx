@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Gameboard.css";
 
-export default function Gameboard() {
+export default function Gameboard({ theme }) {
   const rows = 6; // Number of guesses
   const cols = 5; // Number of letters per word
 
@@ -11,12 +11,13 @@ export default function Gameboard() {
   );
 
   return (
-    <div className="gameboard-container">
+    <div className="gameboard-container" data-theme={theme}>
+      <h1>Hello World</h1>
       <div className="gameboard">
         {board.map((row, rowIndex) => (
-<div key={rowIndex} className="gameboard-row">
+          <div key={rowIndex} className="gameboard-row">
             {row.map((cell, cellIndex) => (
-<div key={cellIndex} className="gameboard-cell">
+              <div key={cellIndex} className="gameboard-cell">
                 {cell}
               </div>
             ))}
@@ -24,5 +25,6 @@ export default function Gameboard() {
         ))}
       </div>
     </div>
+
   );
 }

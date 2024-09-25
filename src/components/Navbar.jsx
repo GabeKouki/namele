@@ -47,10 +47,22 @@ const Navbar = ({ updateTheme, theme }) => {
 					/>
           <div className="mode-container">
             <div onKeyDown={() => updateTheme('dark')} alt="Dark Mode" className="text-container" onClick={() => updateTheme('dark')}>
-            <p>Dark Mode</p>
+            <p>Dark </p>
             </div>
-            <div onKeyDown={() => updateTheme('dark')} alt="Dark Mode" className="text-container" onClick={() => updateTheme('light')}>
-            <p>Light Mode</p>
+            <div onKeyDown={() => updateTheme('dark')} alt="Light Mode" className="text-container" onClick={() => updateTheme('light')}>
+            <p>Light </p>
+            </div>
+						<div onKeyDown={() => updateTheme('jet-black')} alt="Jet Black Mode" className="text-container" onClick={() => updateTheme('jet-black')}>
+            <p>Jet Black</p>
+            </div>
+						<div onKeyDown={() => updateTheme('cream')} alt="Cream Mode" className="text-container" onClick={() => updateTheme('cream')}>
+            <p>Cream</p>
+            </div>
+						<div onKeyDown={() => updateTheme('ocean')} alt="Ocean Mode" className="text-container" onClick={() => updateTheme('ocean')}>
+            <p>Ocean</p>
+            </div>
+						<div onKeyDown={() => updateTheme('sunset')} alt="Jet Black Mode" className="text-container" onClick={() => updateTheme('sunset')}>
+            <p>Sunset</p>
             </div>
           </div>
 					{/* <button onClick={() => { updateTheme('dark'); closeDialog(); }}>Yes</button>

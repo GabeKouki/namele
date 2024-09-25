@@ -43,6 +43,7 @@ dialog {
   height: 48px;
   width: 48px;
   margin-left: 87%;
+  cursor: pointer;
 }
 
 .dialog-blur {

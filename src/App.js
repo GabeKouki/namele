@@ -16,7 +16,7 @@ function App() {
 			<Navbar updateTheme={setTheme} theme={theme} />
 
 			<main className="app-container" data-theme={theme}>
-				<Gameboard />
+				<Gameboard theme={theme} />
 				<Keyboard keyClick={handleKeyboardClick} />
 			</main>
 		</>

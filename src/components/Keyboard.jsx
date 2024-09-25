@@ -46,7 +46,6 @@ export default function Keyboard({ keyClick }) {
               ))}
             </div>
             <div className="keyboardBottomRow keyboardRow">
-              <p>ENTER</p>
               {keysBottomRow.map((key) => (
                 <h1 onKeyDown={() => keyClick(key)} alt={key} key={key} onClick={() => keyClick(key)}>
                   {key}
