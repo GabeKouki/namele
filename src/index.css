@@ -1,56 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 :root {
-  --background-color: #ffffff;        /* Default background: white */
-  --primary-text-color: #000000;      /* Default primary text color: black */
-  --secondary-text-color: #555555;    /* Default secondary text color: dark gray */
-  --foreground-color: #000000;        /* Default foreground color: black */
-  --icon-color: #000000;              /* Default icon color: black */
+  --background-color: #ffffff;
+  --primary-text-color: #000000;
+  --secondary-text-color: #555555;
+  --foreground-color: #000000;
+  --icon-color: #000000;
+  --nav-color: #f0f0f0;
 }
 
 [data-theme="dark"] {
-  --background-color: #1d1d1d;
-  --primary-text-color: #e9dec9;
-  --secondary-text-color: #cccccc;
-  --foreground-color: #e9dec9;
-  --icon-color: #e9dec9;
+  --background-color: #121212;
+  --primary-text-color: #e0e0e0;
+  --secondary-text-color: #b0b0b0;
+  --foreground-color: #e0e0e0;
+  --icon-color: #e0e0e0;
+  --nav-color: #1f1f1f;
 }
 
 [data-theme="jet-black"] {
   --background-color: #000000;
-  --primary-text-color: #333333;
-  --secondary-text-color: #555555;
-  --foreground-color: #333333;
-  --icon-color: #333333;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #cccccc;
+  --icon-color: #ffffff;
+  --nav-color: #1a1a1a;
 }
 
-[data-theme="cream"] {
-  --background-color: #fffdd0;
-  --primary-text-color: #333333;
-  --secondary-text-color: #666666;
-  --foreground-color: #333333;
-  --icon-color: #333333;
+[data-theme="forest"] {
+  --background-color: #2e8b57;
+  --primary-text-color: #e0f2f1;
+  --secondary-text-color: #a7c0cd;
+  --foreground-color: #e0f2f1;
+  --icon-color: #80cbc4;
+  --nav-color: #355e3b;
 }
 
 [data-theme="ocean"] {
-  --background-color: #2e8b57;
+  --background-color: #0077be;
   --primary-text-color: #ffffff;
   --secondary-text-color: #b0e0e6;
   --foreground-color: #ffffff;
   --icon-color: #00ced1;
+  --nav-color: #005082;
 }
 
 [data-theme="sunset"] {
-  --background-color: #ff4500;
-  --primary-text-color: #ffffff;
-  --secondary-text-color: #ffa500;
+  --background-color: #ff900e;
+  --primary-text-color: #e6c660;
+  --secondary-text-color: #fcdd2d;
   --foreground-color: #ffffff;
-  --icon-color: #ff69b4;
+  --icon-color: #c47da0;
+  --nav-color: #f5d444;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
