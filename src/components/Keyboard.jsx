@@ -11,7 +11,7 @@ export default function Keyboard({ keyClick }) {
     const handleKeyPress = (event) => {
       const key = event.key.toUpperCase()
       if ([...keysTopRow, ...keysMiddleRow, ...keysBottomRow].includes(key)) {
-        console.log(key)
+        // console.log(key)
       }
     }
 

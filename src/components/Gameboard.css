@@ -24,3 +24,7 @@
   justify-content: center;
   margin-top: 5px;
 }
+
+.gameboard-cell h1 {
+  font-size: 1.5rem;
+}

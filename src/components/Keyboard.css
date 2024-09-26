@@ -13,8 +13,10 @@
 .keyboardMiddleRow,
 .keyboardBottomRow {
   display: grid;
-  gap: 1px;
+  gap: 5px;
   overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .keyboardTopRow {
@@ -44,6 +46,7 @@
   justify-content: center;
   user-select: none;
   margin: 0;
+  border-radius: 5px;
 }
 
 .keyboardContainer h1:hover {
