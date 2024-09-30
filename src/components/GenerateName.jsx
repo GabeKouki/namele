@@ -12,4 +12,6 @@ const GenerateName = () => {
 
     setTargetName(newName)
   }
+
+  return targetName;
 }
