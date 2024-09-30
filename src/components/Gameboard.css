@@ -28,3 +28,16 @@
 .gameboard-cell h1 {
   font-size: 1.5rem;
 }
+
+.gameboard-cell.correct {
+  background-color: #538d4e; /* Green color for correct guesses */
+}
+
+.gameboard-cell.present {
+  background-color: #b59f3b; /* Yellow color for present but incorrect position */
+}
+
+.gameboard-cell.absent {
+  background-color: #3a3a3c; /* Dark gray color for absent letters */
+  transition: color 0.3s ease; /* Transition effect for color change */
+}

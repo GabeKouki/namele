@@ -13,8 +13,8 @@ function App() {
 
   return (
     <>
-      <Navbar updateTheme={setTheme} theme={theme} />
-      <main className="app-container" data-theme={theme}>
+          <Navbar updateTheme={setTheme} theme={theme} />
+<main className="app-container" data-theme={theme}>
         <Gameboard theme={theme} />
         <Keyboard keyClick={handleKeyboardClick} />
       </main>

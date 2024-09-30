@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './Gameboard.css'
+import GameOver from './GameOver'
+import GenerateName from './GenerateName'
+import { getRandomName } from './names'
 
 export default function Gameboard({ theme }) {
   const rows = 6
@@ -11,9 +14,14 @@ export default function Gameboard({ theme }) {
   const [board, setBoard] = useState(initialBoard)
   const [currentRow, setCurrentRow] = useState(0)
   const [currentGuess, setCurrentGuess] = useState('')
-  const targetWord = 'react'
+  const [gameOver, setGameOver] = useState(false)
+  const targetWord = useRef(getRandomName())
 
   useEffect(() => {
+    //!Disables keyboard input when game is over
+    if (gameOver) {
+      return
+    }
     const handleKeyDown = (event) => {
       //! check if the row they are guessing on is within the bounds of the board
       if (currentRow < rows) {
@@ -39,7 +47,7 @@ export default function Gameboard({ theme }) {
           //! Logic to ensure user isn't guessing a word longer than 5 characters
           if (currentGuess.length < cols) {
             //! Adding the letter to the currentGuess array
-            setCurrentGuess((prev) => prev + event.key.toUpperCase())
+            setCurrentGuess((prev) => prev + event.key.toLowerCase())
           }
         }
       }
@@ -47,16 +55,22 @@ export default function Gameboard({ theme }) {
     //! Listening for user keyboard presses
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [currentGuess, currentRow])
+  }, [currentGuess, currentRow, gameOver])
 
   const checkGuess = () => {
+    //! Creating new board state to avoid directly mutating board state
     const newBoard = [...board]
+    //!Splitting the currentGuess and targetWord so I can loop through each letter and check for correctness.
     const guessLetters = currentGuess.split('')
-    const targetLetters = targetWord.split('')
+    const targetLetters = targetWord.current.split('')
 
-    let statuses = Array(cols).fill('absent')
-    let tempTargetLetters = [...targetLetters]
+    //!Initializing statuses to reflect the absence of each letter, if present state will change to correct or present
+    const statuses = Array(cols).fill('absent')
+    //!New array to avoid mutating the targetLetters Array
+    const tempTargetLetters = [...targetLetters]
 
+    //! Loop through each letter in guess against target word and update correct status for each letter
+    //! Eventually this will change the color behind the letter to green to indicate correctness
     for (let i = 0; i < cols; i++) {
       if (guessLetters[i] === targetLetters[i]) {
         statuses[i] = 'correct'
@@ -64,13 +78,16 @@ export default function Gameboard({ theme }) {
       }
     }
 
+    //! Loop through each letter in guess against target word and update present status for each letter
+    //! Eventually this will change the color behind the letter to yellow to indicate presence
     for (let i = 0; i < cols; i++) {
-      if (statuses[i] !== 'correct' && tempTargetLetters.includes(guessLetters[i])) {
+      if (statuses[i] !== 'correct' && targetWord.current.includes(guessLetters[i])) {
         statuses[i] = 'present'
-        tempTargetLetters[tempTargetLetters.indexOf(guessLetters[i])] = null
+        tempTargetLetters[i] = null
       }
     }
 
+    //! Update the board to reflect the guessed Names in their respective rows
     for (let i = 0; i < cols; i++) {
       newBoard[currentRow][i] = {
         letter: guessLetters[i],
@@ -78,26 +95,32 @@ export default function Gameboard({ theme }) {
       }
     }
 
-
+    if (guessLetters.join('') === targetWord.current) {
+      //! If the guess is correct, set gameOver to true
+      setGameOver(true)
+    }
+    //! Updating state logic for moving to the next row
     setBoard(newBoard)
     setCurrentGuess('')
     setCurrentRow((prevRow) => prevRow + 1)
-
-    
   }
+
   return (
     <>
+      {gameOver ? <GameOver /> : null}
       <div className="gameboard-container" data-theme={theme}>
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="gameboard-row">
             {row.map((cell, cellIndex) => {
               let displayLetter = cell.letter
+              let cellStatus = cell.status
 
               if (rowIndex === currentRow) {
                 displayLetter = currentGuess[cellIndex] || ''
+                cellStatus = ''
               }
               return (
-                <div key={cellIndex} className="gameboard-cell">
+                <div key={cellIndex} className={`gameboard-cell ${cellStatus}`}>
                   <h1>{displayLetter}</h1>
                 </div>
               )
@@ -105,6 +128,7 @@ export default function Gameboard({ theme }) {
           </div>
         ))}
       </div>
+      {/* <GenerateName /> */}
     </>
   )
 }
