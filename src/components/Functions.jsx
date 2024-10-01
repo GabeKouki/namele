@@ -55,5 +55,8 @@ export const namele = {
         setBoard(newBoard)
         setCurrentGuess('')
         setCurrentRow((prevRow) => prevRow + 1)
+  }, 
+  testMe: (Param1) => {
+    console.log(Param1)
   }
 }

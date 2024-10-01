@@ -34,7 +34,7 @@ nav {
   color: var(--primary-text-color);
 }
 
-dialog {
+.nav-dialog {
   z-index: 2;
   width: 20vw;
   height: 80vh;

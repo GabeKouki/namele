@@ -76,7 +76,7 @@ export default function Gameboard({ theme }) {
 
   return (
     <>
-      {showGameOver && <GameOver endState={endState} />}
+      {showGameOver && <GameOver endState={endState} functioncall={namele.testMe(targetWord.current)}/>}
       <div className="gameboard-container" data-theme={theme}>
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="gameboard-row">

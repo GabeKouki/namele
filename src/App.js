@@ -4,6 +4,7 @@ import useLocalStorage from 'use-local-storage'
 import Gameboard from './components/Gameboard'
 import Keyboard from './components/Keyboard'
 
+
 function App() {
   const [theme, setTheme] = useLocalStorage('theme', 'light')
 
@@ -13,11 +14,12 @@ function App() {
 
   return (
     <>
-          <Navbar updateTheme={setTheme} theme={theme} />
-<main className="app-container" data-theme={theme}>
-        <Gameboard theme={theme} />
-        <Keyboard keyClick={handleKeyboardClick} />
-      </main>
+        <Navbar updateTheme={setTheme} theme={theme} />
+        <main className="app-container" data-theme={theme}>
+          <Gameboard theme={theme} />
+          <Keyboard keyClick={handleKeyboardClick} />
+        </main>
+
     </>
   )
 }

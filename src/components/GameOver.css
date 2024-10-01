@@ -1,20 +1,15 @@
 .game-over {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border: 3px solid black;
   position: fixed;
-  bottom: -100%;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
-  text-align: center;
-  transition: bottom 1.5s ease-in-out;
+  z-index: 100;
 }
 
-.game-over.visible {
-  bottom: 0;
-}
-
-.win-dialog, .lose-dialog {
-  max-width: 300px;
-  margin: 0 auto;
+.win-dialog {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background:  red;
 }

@@ -37,7 +37,7 @@ const Navbar = ({ updateTheme, theme }) => {
         <LightBulbIcon className="nav-icon pointer" onClick={handleThemeChange} />
       </nav>
 
-      <dialog ref={dialogRef} data-theme={theme}>
+      <dialog className="nav-dialog" ref={dialogRef} data-theme={theme}>
         <div className="dialog-container">
           <img
             src={closeButton}
