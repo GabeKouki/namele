@@ -11,11 +11,26 @@ export default function Gameboard({ theme }) {
     .fill(null)
     .map(() => Array(cols).fill({ letter: '', status: '' }))
 
+
+    //! Game state logic
   const [board, setBoard] = useState(initialBoard)
   const [currentRow, setCurrentRow] = useState(0)
   const [currentGuess, setCurrentGuess] = useState('')
+  const targetWord = useRef(getRandomName().toLowerCase())
+  
+  
+  //! GameOver state logic
   const [gameOver, setGameOver] = useState(false)
-  const targetWord = useRef(getRandomName())
+  const [endState, setEndState] = useState("")
+  const [showGameOver, setShowGameOver] = useState(false)
+
+  useEffect(() => {
+    if (gameOver) {
+      setTimeout(() => {
+        setShowGameOver(true)
+      }, 0)
+    }
+  }, [gameOver])
 
   useEffect(() => {
     //!Disables keyboard input when game is over
@@ -24,6 +39,7 @@ export default function Gameboard({ theme }) {
     }
     const handleKeyDown = (event) => {
       //! check if the row they are guessing on is within the bounds of the board
+      console.log(targetWord)
       if (currentRow < rows) {
         //! check the keyDown event to see check for enter key
         if (event.key === 'Enter') {
@@ -31,8 +47,7 @@ export default function Gameboard({ theme }) {
           if (currentGuess.length === cols) {
             //! If the guess is a valid length, invoke checkGuess function
             //! will fetch Guess in checkGuess() - function is being invoked when the user guess is valid
-            namele.checkGuess(board, currentGuess, targetWord, cols, currentRow, setGameOver, setBoard, setCurrentGuess, setCurrentRow)
-          } else {
+            namele.checkGuess(board, currentGuess, targetWord, cols, currentRow, setGameOver, setBoard, setCurrentGuess, setCurrentRow, setEndState)          } else {
             //!Change this to be an actual formatted timed alert
             alert('Please enter a valid guess')
           }
@@ -61,7 +76,7 @@ export default function Gameboard({ theme }) {
 
   return (
     <>
-      {gameOver ? <GameOver /> : null}
+      {showGameOver && <GameOver endState={endState} />}
       <div className="gameboard-container" data-theme={theme}>
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="gameboard-row">

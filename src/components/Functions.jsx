@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 export const namele = {
   getRandomName: (name) => {
     console.log(name);
   }, 
-  checkGuess: (board, currentGuess, targetWord, cols, currentRow, setGameOver, setBoard, setCurrentGuess, setCurrentRow) => {
+
+  checkGuess: (board, currentGuess, targetWord, cols, currentRow, setGameOver, setBoard, setCurrentGuess, setCurrentRow, setEndState) => {
         //! Creating new board state to avoid directly mutating board state
         const newBoard = [...board]
         //!Splitting the currentGuess and targetWord so I can loop through each letter and check for correctness.
@@ -40,9 +43,13 @@ export const namele = {
           }
         }
     
-        if (guessLetters.join('') === targetWord.current) {
-          //! If the guess is correct, set gameOver to true
+        //! Handling the game over logic
+        if (guessLetters.join('') === targetWord.current.toLowerCase()) {
           setGameOver(true)
+          setEndState('win')
+        } else if (currentRow === 5) {
+          setGameOver(true)
+          setEndState('lose')
         }
         //! Updating state logic for moving to the next row
         setBoard(newBoard)
