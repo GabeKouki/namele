@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const namele = {
   getRandomName: (name) => {
     console.log(name);
@@ -55,8 +53,14 @@ export const namele = {
         setBoard(newBoard)
         setCurrentGuess('')
         setCurrentRow((prevRow) => prevRow + 1)
+
+        if (currentRow >= 5 || targetWord.current.toLowerCase() === currentGuess.toLowerCase()) {
+          return true
+        }
+
+      return (false && console.log("false")) 
   }, 
-  testMe: (Param1) => {
-    console.log(Param1)
+  testMe: () => {
+    console.log("Working")
   }
 }

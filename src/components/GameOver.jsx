@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { namele } from './Functions'
+import { ReactComponent as WhiteAlienIcon } from '../assets/WhiteAlien.svg'
 import './GameOver.css'
 
 export default function GameOver({ endState }) {
@@ -13,12 +14,16 @@ export default function GameOver({ endState }) {
 
   return (
     <>
-      <div className={`game-over ${visible ? 'visible' : ''}`}>
+    <div className="game-over-container">
+      {/* <div className={`game-over ${visible ? 'visible' : ''}`} /> */}
         {endState === 'win' ? (
           <div>
             <dialog open className='win-dialog'>
-              <h1>Hello</h1>
-              <h1 className="pointer">World</h1>
+              <WhiteAlienIcon className='win-dialog-icon' />
+              <h1>Thank you for playing</h1>
+              <h2>Want to play again</h2>
+              <button>Play again</button>
+              <button>View our other games</button>
               <button onClick={() => namele.testMe("helo")}>Click Me</button>
             </dialog>
           </div>
@@ -28,7 +33,7 @@ export default function GameOver({ endState }) {
             <p>Better luck next time!</p>
           </div>
         )}
-      </div>
+        </div>
     </>
   )
 }

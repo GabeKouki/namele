@@ -76,7 +76,8 @@ export default function Gameboard({ theme }) {
 
   return (
     <>
-      {showGameOver && <GameOver endState={endState} functioncall={namele.testMe(targetWord.current)}/>}
+    {/* //TODO: Pass in props here to GameOver to reset the states in order for the game to restart */}
+      {showGameOver && <GameOver endState={endState} />}
       <div className="gameboard-container" data-theme={theme}>
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="gameboard-row">

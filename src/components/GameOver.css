@@ -1,15 +1,26 @@
-.game-over {
+.game-over-container {
   width: 100vw;
   height: 100vh;
   margin: 0;
   border: 3px solid black;
   position: fixed;
   z-index: 100;
+  display: flex;
+  align-items: center;
 }
 
 .win-dialog {
   position: fixed;
+  width: 400px;
+  height: 600px;
+  background:  red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.win-dialog-icon {
   width: 100px;
   height: 100px;
-  background:  red;
 }
