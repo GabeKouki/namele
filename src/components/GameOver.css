@@ -24,3 +24,14 @@
   width: 100px;
   height: 100px;
 }
+
+.game-over.Visible {
+  display: block;
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  backdrop-filter: blur(2.5px);
+  background-color: red;
+}

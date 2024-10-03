@@ -3,35 +3,46 @@ import { namele } from './Functions'
 import { ReactComponent as WhiteAlienIcon } from '../assets/WhiteAlien.svg'
 import './GameOver.css'
 
-export default function GameOver({ endState }) {
+export default function GameOver({ endState, setGameOver, setEndState, setBoard, setCurrentRow, setCurrentGuess, rows, cols }) {
   const [visible, setVisible] = useState(false)
-  const dialog = document.querySelector("dialog");
+  const [showModal, setShowModal] = useState(false)
 
-  // let endState = 'win'
+ //! this is the logic to display the modal when the game is over
   useEffect(() => {
-    setVisible(true)
-  }, [])
+    if (endState === 'win' || endState === 'lose') {
+      namele.handleGameOver(endState, setVisible, setShowModal);
+    }
+  }, [endState]);
+
+  //!Here for cleanliness, going to be attatched to a button. 
+  
+  const handlePlayAgain = () => {
+    namele.playAgain(setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols);
+  }
+
 
   return (
     <>
     <div className="game-over-container">
-      {/* <div className={`game-over ${visible ? 'visible' : ''}`} /> */}
+      <div className={`game-over ${visible ? 'visible' : ''}`} />
         {endState === 'win' ? (
           <div>
-            <dialog open className='win-dialog'>
+            <div className='win-dialog'>
               <WhiteAlienIcon className='win-dialog-icon' />
               <h1>Thank you for playing</h1>
               <h2>Want to play again</h2>
               <button>Play again</button>
               <button>View our other games</button>
               <button onClick={() => namele.testMe("helo")}>Click Me</button>
-            </dialog>
+            </div>
           </div>
         ) : (
+          <>
           <div className="lose-dialog">
-            <h2>Game Over</h2>
-            <p>Better luck next time!</p>
+            <h1>Hello</h1>
+            <button onClick={() => namele.exitGame() && console.log("Exited")}>Exit</button>
           </div>
+          </>
         )}
         </div>
     </>

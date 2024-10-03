@@ -60,7 +60,29 @@ export const namele = {
 
       return (false && console.log("false")) 
   }, 
-  testMe: () => {
-    console.log("Working")
+  handleGameOver: (endState, setVisible, setShowModal) => {
+    setVisible(true);
+    setShowModal(true);
+    setTimeout(() => {
+      const modal = document.querySelector('.game-over-modal');
+      if (modal) {
+        modal.style.transform = "translateY(0)";
+      }
+    }, 5000)
+  },
+  playAgain: (setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols) => {
+    setGameOver(false);
+    setEndState(null);
+    setVisible(false);
+    setShowModal(false);
+    setBoard(Array(rows).fill(null).map(() => Array(cols).fill({ letter: '', status: '' })));
+    setCurrentRow(0);
+    setCurrentGuess('');
+  },
+  exitGame: () => {
+    window.close();
   }
+
+
+
 }
