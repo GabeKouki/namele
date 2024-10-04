@@ -437,7 +437,9 @@ const names = [
   'Olson',
   'Adele',
   'Ponce',
-  'Adolf'
+  'Adolf',
 ]
 
-export const getRandomName = () => names[Math.floor(Math.random() * names.length)]
+export const getRandomName = () => {
+  return names[Math.floor(Math.random() * names.length)]
+}

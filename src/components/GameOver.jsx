@@ -3,7 +3,7 @@ import { namele } from './Functions'
 import { ReactComponent as WhiteAlienIcon } from '../assets/WhiteAlien.svg'
 import './GameOver.css'
 
-export default function GameOver({ endState, setGameOver, setEndState, setBoard, setCurrentRow, setCurrentGuess, rows, cols, setTargetWord }) {
+export default function GameOver({ endState, setGameOver, setEndState, setBoard, setCurrentRow, setCurrentGuess, rows, cols, targetWord }) {
   const [visible, setVisible] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
@@ -17,7 +17,7 @@ export default function GameOver({ endState, setGameOver, setEndState, setBoard,
   //!Here for cleanliness, going to be attatched to a button. 
   
   const handlePlayAgain = () => {
-    namele.playAgain(setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols, setTargetWord);
+    namele.playAgain(setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols, targetWord);
   }
 
 
