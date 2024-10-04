@@ -1,7 +1,6 @@
+import { getRandomName } from './names'
+
 export const namele = {
-  getRandomName: (name) => {
-    console.log(name);
-  }, 
 
   checkGuess: (board, currentGuess, targetWord, cols, currentRow, setGameOver, setBoard, setCurrentGuess, setCurrentRow, setEndState) => {
         //! Creating new board state to avoid directly mutating board state
@@ -70,7 +69,7 @@ export const namele = {
       }
     }, 5000)
   },
-  playAgain: (setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols) => {
+  playAgain: (setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols, setTargetWord) => {
     setGameOver(false);
     setEndState(null);
     setVisible(false);
@@ -78,6 +77,7 @@ export const namele = {
     setBoard(Array(rows).fill(null).map(() => Array(cols).fill({ letter: '', status: '' })));
     setCurrentRow(0);
     setCurrentGuess('');
+    setTargetWord(getRandomName().toLowerCase());
   },
   exitGame: () => {
     window.close();

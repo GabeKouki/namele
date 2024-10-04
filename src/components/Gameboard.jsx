@@ -12,13 +12,12 @@ export default function Gameboard({ theme }) {
     .map(() => Array(cols).fill({ letter: '', status: '' }))
 
 
-    //! Game state logic
+  //! Game state logic
   const [board, setBoard] = useState(initialBoard)
   const [currentRow, setCurrentRow] = useState(0)
   const [currentGuess, setCurrentGuess] = useState('')
-  const targetWord = useRef(getRandomName().toLowerCase())
-  
-  
+  const [targetWord, setTargetWord] = useState(getRandomName().toLowerCase())
+
   //! GameOver state logic
   const [gameOver, setGameOver] = useState(false)
   const [endState, setEndState] = useState("")
@@ -47,7 +46,8 @@ export default function Gameboard({ theme }) {
           if (currentGuess.length === cols) {
             //! If the guess is a valid length, invoke checkGuess function
             //! will fetch Guess in checkGuess() - function is being invoked when the user guess is valid
-            namele.checkGuess(board, currentGuess, targetWord, cols, currentRow, setGameOver, setBoard, setCurrentGuess, setCurrentRow, setEndState)          } else {
+            namele.checkGuess(board, currentGuess, targetWord, cols, currentRow, setGameOver, setBoard, setCurrentGuess, setCurrentRow, setEndState)
+          } else {
             //!Change this to be an actual formatted timed alert
             alert('Please enter a valid guess')
           }
@@ -76,8 +76,18 @@ export default function Gameboard({ theme }) {
 
   return (
     <>
-    {/* //TODO: Pass in props here to GameOver to reset the states in order for the game to restart */}
-      {showGameOver && <GameOver endState={endState} />}
+      {/* //TODO: Pass in props here to GameOver to reset the states in order for the game to restart */}
+      {showGameOver && <GameOver
+        endState={endState}
+        setGameOver={setGameOver}
+        setEndState={setEndState}
+        setBoard={setBoard}
+        setCurrentRow={setCurrentRow}
+        setCurrentGuess={setCurrentGuess}
+        rows={rows}
+        cols={cols}
+        setTargetWord={setTargetWord}
+      />}
       <div className="gameboard-container" data-theme={theme}>
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className="gameboard-row">
