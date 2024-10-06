@@ -3,7 +3,7 @@ import { namele } from './Functions'
 import { ReactComponent as WhiteAlienIcon } from '../assets/WhiteAlien.svg'
 import './GameOver.css'
 
-export default function GameOver({ endState, setGameOver, setEndState, setBoard, setCurrentRow, setCurrentGuess, rows, cols, targetWord }) {
+export default function GameOver({ endState, setGameOver, setEndState, setBoard, setCurrentRow, setCurrentGuess, rows, cols, setTargetWord }) {
   const [visible, setVisible] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
@@ -17,34 +17,40 @@ export default function GameOver({ endState, setGameOver, setEndState, setBoard,
   //!Here for cleanliness, going to be attatched to a button. 
   
   const handlePlayAgain = () => {
-    namele.playAgain(setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols, targetWord);
+    namele.playAgain(setGameOver, setEndState, setVisible, setShowModal, setBoard, setCurrentRow, setCurrentGuess, rows, cols, setTargetWord);
   }
 
 
   return (
     <>
-    <div className="game-over-container">
-      <div className={`game-over ${visible ? 'visible' : ''}`} />
-        {endState === 'win' ? (
-          <div>
+      <div className={`game-over-container ${visible ? 'visible' : ''}`}>
+        <div className={`game-over-modal ${endState === 'win' ? 'win' : 'lose'}`}>
+          {endState === 'win' ? (
             <div className='win-dialog'>
               <WhiteAlienIcon className='win-dialog-icon' />
-              <h1>Thank you for playing</h1>
-              <h2>Want to play again</h2>
-              <button>Play again</button>
-              <button>View our other games</button>
-              <button onClick={() => handlePlayAgain()}>Click Me</button>
+              <h1>Congratulations!</h1>
+              <h2>You guessed the name correctly!</h2>
+              <button onClick={handlePlayAgain}>Play Again</button>
+              <div className="social-media">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
             </div>
-          </div>
-        ) : (
-          <>
-          <div className="lose-dialog">
-            <h1>Hello</h1>
-            <button onClick={() => namele.exitGame() && console.log("Exited")}>Exit</button>
-          </div>
-          </>
-        )}
+          ) : (
+            <div className="lose-dialog">
+              <h1>Game Over</h1>
+              <h2>Better luck next time!</h2>
+              <button onClick={handlePlayAgain}>Play Again</button>
+              <div className="social-media">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          )}
         </div>
+      </div>
     </>
   )
 }
