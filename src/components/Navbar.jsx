@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { ReactComponent as LightBulbIcon } from '../assets/LightBulb.svg'
 import { ReactComponent as LogoIcon } from '../assets/WhiteAlien.svg'
-import closeButton from '../assets/closeButton.svg'
+import { ReactComponent as CloseButtonIcon } from '../assets/closeButton.svg'
 import './Navbar.css'
 
 const Navbar = ({ updateTheme, theme }) => {
@@ -11,7 +11,6 @@ const Navbar = ({ updateTheme, theme }) => {
   const handleThemeChange = () => {
     dialogRef.current.showModal()
     setIsOpen(true)
-    console.log(theme)
   }
 
   const closeDialog = () => {
@@ -39,60 +38,25 @@ const Navbar = ({ updateTheme, theme }) => {
 
       <dialog className="nav-dialog" ref={dialogRef} data-theme={theme}>
         <div className="dialog-container">
-          <img
-            src={closeButton}
-            alt="close"
-            className="nav-icon pointer"
-            onClick={closeDialog}
-            onKeyDown={closeDialog}
-          />
+          <CloseButtonIcon className="nav-icon pointer" onClick={closeDialog} />
+          <h2 className="dialog-title">Select Theme</h2>
           <div className="mode-container">
-            <div
-              onKeyDown={() => updateTheme('dark')}
-              alt="Dark Mode"
-              className="text-container pointer"
-              onClick={() => updateTheme('dark')}
-            >
-              <p>Dark </p>
+            <div alt="Dark Mode" className="text-container" onClick={() => updateTheme('dark')}>
+              <p>Dark</p>
             </div>
-            <div
-              onKeyDown={() => updateTheme('light')}
-              alt="Light Mode"
-              className="text-container pointer"
-              onClick={() => updateTheme('light')}
-            >
-              <p>Light </p>
+            <div alt="Light Mode" className="text-container" onClick={() => updateTheme('light')}>
+              <p>Light</p>
             </div>
-            <div
-              onKeyDown={() => updateTheme('jet-black')}
-              alt="Jet Black Mode"
-              className="text-container pointer"
-              onClick={() => updateTheme('jet-black')}
-            >
+            <div alt="Jet Black Mode" className="text-container" onClick={() => updateTheme('jet-black')}>
               <p>Jet Black</p>
             </div>
-            <div
-              onKeyDown={() => updateTheme('forest')}
-              alt="Forest Mode"
-              className="text-container pointer"
-              onClick={() => updateTheme('forest')}
-            >
+            <div alt="Forest Mode" className="text-container" onClick={() => updateTheme('forest')}>
               <p>Forest</p>
             </div>
-            <div
-              onKeyDown={() => updateTheme('ocean')}
-              alt="Ocean Mode"
-              className="text-container pointer"
-              onClick={() => updateTheme('ocean')}
-            >
+            <div alt="Ocean Mode" className="text-container" onClick={() => updateTheme('ocean')}>
               <p>Ocean</p>
             </div>
-            <div
-              onKeyDown={() => updateTheme('sunset')}
-              alt="Jet Black Mode"
-              className="text-container pointer"
-              onClick={() => updateTheme('sunset')}
-            >
+            <div alt="Sunset Mode" className="text-container" onClick={() => updateTheme('sunset')}>
               <p>Sunset</p>
             </div>
           </div>

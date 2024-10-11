@@ -7,6 +7,7 @@
   margin-top: 50px;
   width: 100%;
   overflow: hidden;
+  height: auto;
 }
 
 .keyboardTopRow,
@@ -17,6 +18,8 @@
   overflow: hidden;
   border-radius: 5px;
   margin-bottom: 5px;
+  font-size: 0.6rem;
+  font-weight: bold;
 }
 
 .keyboardTopRow {
@@ -32,21 +35,20 @@
 
 .keyboardBottomRow {
   color: black;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   cursor: pointer;
 }
 
 .keyboardContainer h1 {
   height: 50px;
   width: 50px;
-  border-radius: 2px;
+  border-radius: 5px;
   background-color: rgb(188, 188, 188);
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
   margin: 0;
-  border-radius: 5px;
 }
 
 .keyboardContainer h1:hover {
@@ -56,4 +58,37 @@
 .keyboardContainer h1:active {
   background-color: rgb(120, 120, 120);
   transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .keyboardContainer {
+    margin-top: 30px;
+    height: auto;
+  }
+
+  .keyboardContainer h1 {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .keyboardTopRow,
+  .keyboardMiddleRow,
+  .keyboardBottomRow {
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .keyboardContainer h1 {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .keyboardTopRow,
+  .keyboardMiddleRow,
+  .keyboardBottomRow {
+    gap: 3px;
+  }
 }
